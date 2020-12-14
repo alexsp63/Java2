@@ -1,7 +1,8 @@
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.time.LocalDateTime;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class Weatherbit {
     private String cityName;
@@ -50,24 +51,12 @@ public class Weatherbit {
             int hours = current.getJSONArray("data").length();
 
             System.out.println();
-            System.out.println((char) 27 + "[30mNow: " + (char)27 + "[0m");
-            System.out.println((char) 27 + "[30mОписание: "
-                    + current.getJSONArray("data").getJSONObject(0).getJSONObject("weather").getString("description") + "\n" +
-                    "Температура воздуха: "
-                    + current.getJSONArray("data").getJSONObject(0).getDouble("temp") + "°С\n" +
-                    "Давление: " +
-                    String.format("%(.2f мм. рт. столба\n", current.getJSONArray("data").getJSONObject(0).getDouble("pres")*3/4) +
-                    "Влажность: "
-                    + current.getJSONArray("data").getJSONObject(0).getDouble("rh") + "%\n" +
-                    "Облачность: "
-                    + current.getJSONArray("data").getJSONObject(0).getDouble("clouds") + "%\n" +
-                    "Скорость ветра: "
-                    + String.format("%(.2f м/с\n", current.getJSONArray("data").getJSONObject(0).getDouble("wind_spd"))
-                    + (char)27 + "[0m");
 
-            for (int i=1; i<hours; i++){
+            for (int i=0; i<hours; i++){
+                DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
+                String newDay = dateFormat.format(Parsing.tomorrow(i));
                 System.out.println();
-                System.out.println((char) 27 + "[30mIn " + i + " hours: " + (char)27 + "[0m");
+                System.out.println((char) 27 + "[36mПрогноз на " + newDay + ": " + (char)27 + "[0m");
                 System.out.println((char) 27 + "[30mОписание: "
                         + current.getJSONArray("data").getJSONObject(i).getJSONObject("weather").getString("description") + "\n" +
                         "Температура воздуха: "
