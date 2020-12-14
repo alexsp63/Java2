@@ -58,7 +58,7 @@ public class OpenWeather {
             System.out.println((char) 27 + "[33m*.*.*. Погода в городе " + cityName + " по данным сервиса OpenWeather *.*.*." + (char) 27 + "[0m");
 
             System.out.println();
-            System.out.println((char) 27 + "[30mNow: " + (char)27 + "[0m");
+            System.out.println((char) 27 + "[36mNow: " + (char)27 + "[0m");
             System.out.println((char) 27 + "[30mОписание: " +
                     current.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("description") + "\n" +
                     "Температура воздуха: " +
