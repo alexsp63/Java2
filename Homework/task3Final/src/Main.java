@@ -65,10 +65,14 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (number != 3){
+        if (number == 1){
             System.out.println((char) 27 + "[30mЭто будет... " +
                     "\n   1 - текущая погода;" +
-                    "\n   2 - почасовой прогноз." + (char)27 + "[0m");
+                    "\n   2 - прогноз на 16 дней." + (char)27 + "[0m");
+        } else if (number == 2){
+            System.out.println((char) 27 + "[30mЭто будет... " +
+                    "\n   1 - текущая погода;" +
+                    "\n   2 - почасовой прогноз на 40 часов." + (char)27 + "[0m");
         } else if (number == 3) {
             System.out.println((char) 27 + "[30mЭто будет... " +
                     "\n   1 - текущая погода;" +
