@@ -3,8 +3,6 @@ import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class WeatherStack {
     private String cityName;
@@ -15,13 +13,6 @@ public class WeatherStack {
 
     public String getCityName() {
         return cityName;
-    }
-
-    public Date yesterday() {
-        //потому что он возвращает json по вчерашней дате
-        final Calendar cal = Calendar.getInstance();
-        cal.add(Calendar.DATE, -1);
-        return cal.getTime();
     }
 
     public boolean getCurrent() throws JSONException {
@@ -64,11 +55,12 @@ public class WeatherStack {
         if (resp.length() != 0) {
             JSONObject current = new JSONObject(resp);
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String today = dateFormat.format(yesterday());
+            String today = dateFormat.format(Parsing.yesterday());
             try{
                 current.getJSONObject("forecast").getJSONObject(today).getDouble("mintemp");
                 System.out.println((char) 27 + "[33m*.*.*. Погода в городе " + cityName + " по данным сервиса WeatherStack *.*.*." + (char)27 + "[0m");
                 System.out.println();
+                System.out.println((char) 27 + "[36mПрогноз на сегодня:"+ (char)27 + "[0m");
                 System.out.println((char) 27 + "[30mМинимальная температура воздуха: "
                         + current.getJSONObject("forecast").getJSONObject(today).getDouble("mintemp") + "°С\n" +
                         "Максимальная температура воздуха: "
