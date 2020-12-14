@@ -1,4 +1,4 @@
-import org.json.JSONException;
+ort org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
@@ -53,33 +53,20 @@ public class OpenWeather {
             int hours = current.getJSONArray("list").length();
             DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
-            String temp = decimalFormat.format(current.getJSONArray("list").getJSONObject(0).getJSONObject("main").getDouble("temp") - 273.15);
-            String fl = decimalFormat.format(current.getJSONArray("list").getJSONObject(0).getJSONObject("main").getDouble("feels_like") - 273.15);
+            String temp;
+            String fl;
             System.out.println((char) 27 + "[33m*.*.*. Погода в городе " + cityName + " по данным сервиса OpenWeather *.*.*." + (char) 27 + "[0m");
 
-            System.out.println();
-            System.out.println((char) 27 + "[36mNow: " + (char)27 + "[0m");
-            System.out.println((char) 27 + "[30mОписание: " +
-                    current.getJSONArray("list").getJSONObject(0).getJSONArray("weather").getJSONObject(0).getString("description") + "\n" +
-                    "Температура воздуха: " +
-                    temp + "°С\n" +
-                    "Ощущается как: " +
-                    fl + "°С\n" +
-                    "Давление: " +
-                    String.format("%(.2f мм. рт. столба\n", current.getJSONArray("list").getJSONObject(0).getJSONObject("main").getDouble("pressure") * 3 / 4) +
-                    "Влажность: " +
-                    current.getJSONArray("list").getJSONObject(0).getJSONObject("main").getDouble("humidity") + "%\n" +
-                    "Облачность: " +
-                    current.getJSONArray("list").getJSONObject(0).getJSONObject("clouds").getDouble("all") + "%\n" +
-                    "Скорость ветра: "
-                    + String.format("%(.2f м/с\n", current.getJSONArray("list").getJSONObject(0).getJSONObject("wind").getDouble("speed"))
-                    + (char) 27 + "[0m");
-            for (int i=1; i<hours; i++){
+            for (int i=0; i<hours; i++){
                 temp = decimalFormat.format(current.getJSONArray("list").getJSONObject(i).getJSONObject("main").getDouble("temp") - 273.15);
                 fl = decimalFormat.format(current.getJSONArray("list").getJSONObject(i).getJSONObject("main").getDouble("feels_like") - 273.15);
-
                 System.out.println();
-                System.out.println((char) 27 + "[30mIn " + i + " hours: " + (char)27 + "[0m");
+
+                if (i == 0){
+                    System.out.println((char) 27 + "[36mNow: " + (char)27 + "[0m");
+                } else {
+                    System.out.println((char) 27 + "[36mIn " + i + " hours: " + (char)27 + "[0m");
+                }
                 System.out.println((char) 27 + "[30mОписание: " +
                         current.getJSONArray("list").getJSONObject(i).getJSONArray("weather").getJSONObject(0).getString("description") + "\n" +
                         "Температура воздуха: " +
