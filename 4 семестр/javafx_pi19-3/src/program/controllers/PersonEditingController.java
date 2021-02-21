@@ -34,8 +34,8 @@ public class PersonEditingController {
 
     @FXML private void initialize() {}
 
-    public void setDialogueStage(Stage dialogStage) {
-        this.dialogueStage = dialogStage;
+    public void setDialogueStage(Stage dialogueStage) {
+        this.dialogueStage = dialogueStage;
     }
 
     public void setPerson(Person person) {
