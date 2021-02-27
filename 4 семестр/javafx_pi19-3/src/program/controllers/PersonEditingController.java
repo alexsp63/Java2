@@ -34,8 +34,8 @@ public class PersonEditingController {
 
     @FXML private void initialize() {}
 
-    public void setDialogueStage(Stage dialogueStage) {
-        this.dialogueStage = dialogueStage;
+    public void setDialogueStage(Stage dialogStage) {
+        this.dialogueStage = dialogStage;
     }
 
     public void setPerson(Person person) {
@@ -54,7 +54,7 @@ public class PersonEditingController {
             streetText.setText("");
             cityText.setText("");
             postalCodeText.setText("");
-            birthdayText.setText("");
+            birthdayText.setPromptText("dd.MM.yyyy");
         }
     }
 
