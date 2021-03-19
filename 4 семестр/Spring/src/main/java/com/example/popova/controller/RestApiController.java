@@ -21,8 +21,8 @@ public class RestApiController {
 
     @PostMapping(value="/api/person")
     private ResponseEntity<?> create(@RequestBody Person person){
-        personService.create(person);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        Person newPerson = personService.create(person);
+        return new ResponseEntity<>(newPerson, HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/api/person")
@@ -32,5 +32,40 @@ public class RestApiController {
                 ? new ResponseEntity<>(personList, HttpStatus.OK)
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
+
+
+    @GetMapping(value = "api/person/{id}")
+    public ResponseEntity<Person> read(@PathVariable(name = "id") int id) {
+        final Person person = personService.read(id);
+        return person != null ? new ResponseEntity<>(person, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping(value = "api/person/{id}")
+    public ResponseEntity<Person> put(@PathVariable(name = "id") int id, @RequestBody Person newPerson) {
+        if (personService.update(newPerson, id)) {
+            Person newPersonWithId = personService.read(id);
+            return new ResponseEntity<>(newPersonWithId, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+    @DeleteMapping(value = "api/person/{id}")
+    public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
+        final Person person = personService.read(id);
+        if (person != null) {
+            personService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
+
+
+
+
+
+
+
+
 
 }

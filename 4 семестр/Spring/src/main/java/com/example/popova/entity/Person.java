@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 //@Table(name="")
@@ -17,9 +18,10 @@ public class Person {
     //здесь не обязательно аннотацию пихать перед каждым атрибутом, но можно напсиать @Column(name=)
     private String firstName;
     private String lastName;
-    private String city;
     private String street;
-
+    private String city;
+    private String postalCode;
+    private LocalDate birthDay;
 
     @Override
     public String toString() {
@@ -27,8 +29,16 @@ public class Person {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", postalCode='" + postalCode + '\'' +
+                ", birthDay=" + birthDay +
                 '}';
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+
 }
