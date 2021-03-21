@@ -2,6 +2,7 @@ package com.example.popova.service;
 
 import com.example.popova.entity.Person;
 import com.example.popova.repository.PersonRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,34 +24,20 @@ public class PersonService {
 
 
     public Person create(Person person){
-
-        final int lastPersonId = personId.incrementAndGet();
-        person.setId((long) lastPersonId);
-        personRepository.save(person);
-        return person;
+        return personRepository.save(person);
     }
 
-    public Person read(int id) {
-        return personRepository.findById(id);
+    public Person update(Person person, Person personFromDB) {
+        BeanUtils.copyProperties(person, personFromDB, "id");
+        return personRepository.save(personFromDB);
     }
 
-    public boolean update(Person person, int id) {
-        Person thisPerson = personRepository.findById(id);
-        if (thisPerson == null){
-            return false; //нет такого пёрсона
+    public boolean delete(Person person) {
+        if (person != null){
+            personRepository.delete(person);
+            return true;
         }
-        personRepository.delete(thisPerson);  //удалить старую инфу
-        personRepository.save(person);        //добавить новую
-        return true;
-    }
-
-    public boolean delete(int id) {
-        Person thisPerson = personRepository.findById(id);
-        if (thisPerson == null) {
-            return false;
-        }
-        personRepository.delete(thisPerson);
-        return true;
+        return false;
     }
 
 }

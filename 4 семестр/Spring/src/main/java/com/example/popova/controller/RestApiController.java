@@ -35,25 +35,26 @@ public class RestApiController {
 
 
     @GetMapping(value = "api/person/{id}")
-    public ResponseEntity<Person> read(@PathVariable(name = "id") int id) {
-        final Person person = personService.read(id);
-        return person != null ? new ResponseEntity<>(person, HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Person> getOne(@PathVariable(name = "id") Person person) {
+        final Person currentPerson = person;
+        return person != null
+                ? new ResponseEntity<>(currentPerson, HttpStatus.OK)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping(value = "api/person/{id}")
-    public ResponseEntity<Person> put(@PathVariable(name = "id") int id, @RequestBody Person newPerson) {
-        if (personService.update(newPerson, id)) {
-            Person newPersonWithId = personService.read(id);
-            return new ResponseEntity<>(newPersonWithId, HttpStatus.OK);
+    public ResponseEntity<?> put(@PathVariable(name = "id") Person personFromDB,
+                                 @RequestBody Person person) {
+        Person updatedPerson = personService.update(person, personFromDB);
+        if (updatedPerson != null) {
+            return new ResponseEntity<>(updatedPerson, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping(value = "api/person/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "id") int id) {
-        final Person person = personService.read(id);
-        if (person != null) {
-            personService.delete(id);
+    public ResponseEntity<List<Person>> delete(@PathVariable(name = "id") Person person) {
+        if (personService.delete(person)) {
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
