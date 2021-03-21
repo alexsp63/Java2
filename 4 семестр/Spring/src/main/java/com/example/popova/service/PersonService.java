@@ -12,8 +12,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class PersonService {
 
-    private static final AtomicInteger personId = new AtomicInteger();
-
     @Autowired //автоматич создает данный объект
     private PersonRepository personRepository;
 
