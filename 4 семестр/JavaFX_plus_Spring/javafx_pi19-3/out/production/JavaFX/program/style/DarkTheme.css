@@ -1,0 +1,55 @@
+/*цвет фона*/
+.background{
+    -fx-background-color: #1d1d1d;
+}
+/*лэйблы*/
+.label{
+    -fx-text-fill: silver;
+    -fx-font-size: 11pt;
+}
+/*лэйбл, где написано Person Details*/
+.label-1{
+    -fx-text-fill: white;
+    -fx-font-size: 14pt;
+    -fx-font-weight: bold;
+}
+/*кнопочки*/
+.button{
+    -fx-background-color: dimgray;
+    -fx-text-fill: white;
+}
+/*цвет кнопочки при наведении на неё*/
+.button:hover{
+    -fx-background-color: #3d3d3d;
+}
+/*табличка*/
+.table-view{
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: black;
+    -fx-table-header-border-color: black;
+}
+/*изменение цвета и контура выбранного строки*/
+.table-row-cell:filled:selected,
+.table-row-cell:filled > .table-cell:selected {
+    -fx-background: dimgray;
+    -fx-table-cell-border-color: black;
+    -fx-background-color: #3d3d3d;
+}
+/*по умолчанию было синим, когда наводим на item меню-бара, я сделала серым, чтоб подходило по стилю*/
+.menu-bar {
+    -fx-selection-bar: #3d3d3d;
+    -fx-text-background-color: lightgrey ;
+    -fx-focused-text-base-color: white ;
+}
+/*наведение на меню-бар*/
+.menu-item:hover{
+    -fx-background-color: gray;
+}
+/*текстовые поля*/
+.text-field{
+    -fx-background-color: dimgray;
+    -fx-text-fill: white;
+}
+/*единственное я не разобралась, как поменять цвет контура первоначально выделенной строки в таблице (он по умолчанию синий)*/
