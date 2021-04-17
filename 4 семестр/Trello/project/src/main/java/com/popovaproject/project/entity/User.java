@@ -1,5 +1,6 @@
 package com.popovaproject.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,11 +41,14 @@ public class User {
     private Set<Role> roles;
 
     @OneToMany(mappedBy = "developer")
+    @JsonBackReference
     private Set<Task> developerTask;
 
     @OneToMany(mappedBy = "analyst")
+    @JsonBackReference
     private Set<Task> analystTask;
 
     @OneToMany(mappedBy = "tester")
+    @JsonBackReference
     private Set<Task> testerTask;
 }

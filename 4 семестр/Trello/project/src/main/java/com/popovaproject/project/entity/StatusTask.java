@@ -1,5 +1,6 @@
 package com.popovaproject.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,5 +24,6 @@ public class StatusTask {
     private Status status;
 
     @OneToMany(mappedBy = "statusTask")
+    @JsonBackReference
     private Set<Task> tasks;
 }
