@@ -25,6 +25,7 @@ public class UserController {
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "http://localhost:63342", allowedHeaders = "*")
     @GetMapping(value = "/api/user")
     private ResponseEntity<List<User>> readAll(){
         final List<User> userList = userService.findAll();
