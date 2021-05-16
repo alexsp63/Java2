@@ -11,20 +11,23 @@
 </head>
 <body>
 <div class="loginForm">
-    <form class="form-signin" method="post" action="/auth/login">
+    <form class="form-signin">
         <h2 class="heading">Пожалуйста, авторизуйтесь</h2>
         <p>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Введите логин" required >
+            <input type="text" id="login" name="login" class="form-control" placeholder="Введите логин" required >
             <input type="password" id="password" name="password" class="form-control" placeholder="Введите пароль" required>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+            <button id="signIn" class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
         </p>
         <label> Ещё не зарегистрированы? </label>
         </p>
-        <p class="change_link">
-            <a href="#tologin" class="to_subscribe"> Зарегистрироваться </a>
+        <p class="change_link" onclick="window.location.href='signup.html';">
+            <a href="#signup.html" class="to_subscribe"> Зарегистрироваться </a>
         </p>
     </form>
-    
 </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="login.js">
+</script>
 </html>

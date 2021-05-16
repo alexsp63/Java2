@@ -20,7 +20,7 @@ form {
 }
 .signUpForm{
     width: 400px;
-    height: 300px;
+    height: 400px;
     background-color: #ffffff;
     background-size: cover;
     opacity: 0.7;
@@ -79,7 +79,7 @@ form {
 }
 .form-signin{
     position:absolute;
-    top: 30%;
+    top: 28%;
     bottom: 0;
     left:0;
     right:0;
@@ -87,7 +87,7 @@ form {
 }
 .form-signup {
     position: absolute;
-    top: 30%;
+    top: 25%;
     bottom: 0;
     left: 0;
     right: 0;

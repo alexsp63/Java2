@@ -21,8 +21,15 @@ public class UserController {
 
     @PostMapping(value="/api/user")
     private ResponseEntity<?> create(@RequestBody User user){
-        User newUser = userService.create(user);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+        System.out.println("Регистрация: " + user);
+        if (user.getLogin().length() != 0 &&
+                user.getFirstName().length() != 0 &&
+                user.getLastName().length() != 0 &&
+                user.getPasswordHash().length() != 0) {
+            User newUser = userService.create(user);
+            return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @CrossOrigin(origins = "http://localhost:63342", allowedHeaders = "*")

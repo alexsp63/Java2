@@ -1,34 +1,12 @@
 $(document).ready(function () {
-    /*
-    $("#signUp").click(function () {
-        $.ajax({
-            url:"http://localhost:8080/api/user",
-            type: "GET",
-            dataType: "json",
-            success: function (response) {
-                console.log(response);
-            },
-            error: function (response){
-                console.log(response);
 
-            }
-        });
-
-    });
-
-
-
-     */
-    $("#signUp").click(async function (){
+    $("#signIn").click(async function (){
         let varData = {
-            "login": $("#login"),
-            "firstName": $("#firstName"),
-            "lastName": $("#lastName"),
-            "password": $("#password")
+            "username": $("#login").val(),
+            "password": $("#password").val()
         };
         console.log(varData);
-        let response = await fetch ("http://localhost:8080/api/user", {
-            mode: "no-cors",
+        let response = await fetch ("http://localhost:8080/api/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json;charset=utf-8"
@@ -37,5 +15,4 @@ $(document).ready(function () {
         });
         console.log(response)
     });
-
 })

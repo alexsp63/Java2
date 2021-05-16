@@ -83,4 +83,8 @@ public class User {
     public String getLastName() {
         return lastName;
     }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 }

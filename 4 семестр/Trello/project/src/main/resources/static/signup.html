@@ -18,21 +18,22 @@
         <p>
             <input id="login" name="login" required="required" class="form-control1" type="text" placeholder="Логин" />
             <input id="firstName" name="firstName" required="required" class="form-control1" type="text" placeholder="Имя"/>
-            <input id="lastName" name="lastName" required="required" class="form-control1" type="password" placeholder="Фамилия"/>
+            <input id="lastName" name="lastName" required="required" class="form-control1" type="text" placeholder="Фамилия"/>
+            <input id="middleName" name="middleName" required="required" class="form-control1" type="text" placeholder="Отчество"/>
             <input id="password" name="password" class="form-control1" required="required" type="password" placeholder="Пароль"/>
-            <div id="signUp" class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</div>
+            <button id="signUp" class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
         </p>
         <p>
             <label> Уже зарегистрированы? </label>
         </p>
-        <p class="change_link">
-            <a href="#tologin" class="to_subscribe"> Войти </a>
+        <p class="change_link" onclick="window.location.href='login.html';">
+            <a href="#login.html" class="to_subscribe"> Войти </a>
         </p>
     </form>
 </div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="login.js">
+<script type="text/javascript" src="signup.js">
 </script>
 </html>

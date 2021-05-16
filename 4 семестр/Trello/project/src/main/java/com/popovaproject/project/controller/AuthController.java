@@ -30,9 +30,10 @@ public class AuthController {
     }
 
 
-    @PostMapping("/login")
+    @PostMapping("/api/login")
     public ResponseEntity<?> authenticate(@RequestBody AuthRequest request) {
         try {
+            System.out.println("Авторизация: " + request);
             String login = request.getLogin();
             String password = request.getPassword();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login, password));
@@ -47,9 +48,10 @@ public class AuthController {
             response.put("role", user.getRole().name());
             response.put("status", user.getStatus().name());
             response.put("token", token);
+            System.out.println(response);
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.OK); //всё равно токена не возвращается
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN); //всё равно токена не возвращается
         }
     }
 }
