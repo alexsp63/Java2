@@ -41,11 +41,11 @@ public class User {
         return users;
     }
 
-    public int getCount() {
+    public static int getCount() {
         return userHashMap.size();
     }
 
-    public int getCount(String sex) {
+    public static int getCount(String sex) {
         return getUserHashMap(sex).size();
     }
 
